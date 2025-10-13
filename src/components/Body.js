@@ -34,13 +34,11 @@ const Body = () => {
     );*/
   };
 
-  if (listOfRestaurants.length === 0) {
-    return <Shimmer />;
-  }
-
   console.log("body rendered");
 
-  return (
+  return listOfRestaurants.length == 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
         <button
