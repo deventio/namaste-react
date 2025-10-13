@@ -1,11 +1,10 @@
 import RestaurantCard from "./RestaurantCard";
-import resObj from "../utils/mockData";
 import { useEffect, useState } from "react";
-import resObj from "../utils/mockData";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   //  Local State Variable - Super powerful variable
-  const [listOfRestaurants, setListOfRestaurants] = useState(resObj);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
 
   useEffect(() => {
     console.log("useeffect called");
@@ -27,11 +26,17 @@ const Body = () => {
     //optional chaining
     setListOfRestaurants(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    ); /*
+    );
+
+    /*
     setFilteredRestaurant(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );*/
   };
+
+  if (listOfRestaurants.length === 0) {
+    return <Shimmer />;
+  }
 
   console.log("body rendered");
 
