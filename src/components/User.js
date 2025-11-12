@@ -1,7 +1,7 @@
-const User = () =>{
+const User = ({name}) =>{
     return( 
     <div className="user-card">
-        <h2>Name: Upasana</h2>
+        <h2>Name: {name}</h2>
           <h3>Location: India</h3>
             <h2>Social: Twitter</h2>
     </div>
