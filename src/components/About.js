@@ -4,7 +4,7 @@ import React from "react";
 class About extends React.Component{
   constructor(props){
     super(props);
-    console.log("About Constructor")
+   // console.log("About Constructor")
   }
 
    componentDidMount(){
@@ -18,7 +18,7 @@ class About extends React.Component{
       <h2>Namaste React Course Work done by Upasana</h2>
     
     <UserClass  name={"Upasana Sharma(class)"} location={"Kolkata, India"}/>
-    <UserClass  name={"Elon Musk"} location={"US"}/>
+  
     </div>
   );
   }
@@ -38,7 +38,7 @@ class About extends React.Component{
 
     - First ComponentDidMount
     - Second ComponentDidMount
-    
+
 - Parent ComponentDidMount
 
 */

@@ -3,33 +3,48 @@ class UserClass extends React.Component{
     constructor(props){
        
         super(props);
-        console.log(props);
+       // console.log(props);
         this.state={
-            count: 22,
-            count2: 2
+            userInfo:{
+                name: "Dummy",
+                location : "Default",
+                avatar_url:"http://dummy-photo.com",
+            }
         }
 
            console.log(this.props.name+"Child constructor");
     }
 
-    componentDidMount(){
+    async componentDidMount(){
         console.log(this.props.name+"Child Component Did Mount");
+   const data = await fetch("https://api.github.com/users/akshaymarch7");
+      
+   const json = await data.json();
+
+   this.setState({
+    userInfo:json
+   });
+
+   console.log(json);
     }
+
+    componentDidUpdate(){
+        console.log("componentdidipdate");
+    }
+
+      componentWillUnmount(){
+        console.log("componentWillUnmount");
+    }
+
+
     render(){
 
         console.log(this.props.name+"UserClass render");
-        const {name, location} = this.props;
-        const {count, count2} = this.state;
-        return( 
+       // const {name, location} = this.props;
+       const {name, location, avatar_url} = this.state.userInfo;
+       return( 
             <div className="user-card">
-                <h1>Count: {count}</h1>
-                   <h1>Count2: {count2}</h1>
-            <button onClick={()=>{
-                this.setState({
-                    count: this.state.count+1,
-                    count2:this.state.count2+1
-                })
-            }}>Count Increase</button>
+            <img src ={avatar_url}></img>
             <h2>Name: {name}</h2>
             <h3>Location: {location}</h3>
             <h2>Social: Twitter</h2>
@@ -39,3 +54,19 @@ class UserClass extends React.Component{
 }
 
 export default UserClass;
+
+/***
+ * 
+ * Constructor (dummy)
+ * Render (dummy)
+ *      <HTML Dummy>
+ * Component did mount
+ *      <API call>
+ *      <this.setstate> -> State variable is updated
+ * 
+ * ----- UPDATE
+ * 
+ *      render(API data )
+ *      <HTML (new API data)>
+ *      Component Did Update
+ */
